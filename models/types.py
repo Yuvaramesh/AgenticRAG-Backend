@@ -8,3 +8,4 @@ class ChatState(TypedDict):
     answer: Optional[str]
     user_email: str
     chat_history: List[dict]
+    image_path: Optional[str]

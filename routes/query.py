@@ -25,10 +25,17 @@ def query():
 
     try:
         result = graph.invoke(initial_state)
+
+        # Safely check for image_path after result is assigned
+        image_path = None
+        if result.get("payload", {}).get("type") == "image":
+            image_path = result["payload"].get("image_path")
+
         return jsonify({
             "answer": result.get("answer", ""),
             "agent_type": result.get("agent_type", ""),
-            "chat_history": result.get("chat_history", [])
+            "chat_history": result.get("chat_history", []),
+            "image_path": image_path
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500

@@ -19,6 +19,8 @@ def upload():
             chunk_count = embed_and_store(file.filename, content)
             total_chunks += chunk_count
         except Exception as e:
+             
+            print(f"Uploaded files: {[file.filename for file in files]}")
             return jsonify({"error": f"{file.filename} failed: {str(e)}"}), 500
 
     return jsonify({"message": f"{total_chunks} chunks embedded from {len(files)} file(s)"}), 200
