@@ -12,3 +12,4 @@ flask_pymongo
 langchain
 pytesseract 
 pillow
+deep-translator

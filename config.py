@@ -2,6 +2,7 @@ import os
 from urllib.parse import quote_plus
 import certifi
 
+
 QDRANT_URL = "https://2ed85abb-e606-4167-8d2e-ce4185f33997.us-east4-0.gcp.cloud.qdrant.io"
 QDRANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.UYr-iYmbfZzhyr-lGQBlMlMuYQIAxriQhZd6af7vLq4"
 COLLECTION_NAME = "agenticragbackend"

@@ -3,6 +3,10 @@ from flask_cors import CORS
 from routes.upload import upload_bp
 from routes.query import query_bp
 from routes.documents import documents_bp
+from routes.translate import translate_bp
+from PyPDF2 import PdfReader
+from docx import Document
+from routes.suggest import suggest_bp   
 
 app = Flask(__name__)
 CORS(app)
@@ -10,6 +14,9 @@ CORS(app)
 app.register_blueprint(upload_bp)
 app.register_blueprint(query_bp)
 app.register_blueprint(documents_bp)
+app.register_blueprint(translate_bp)
+app.register_blueprint(suggest_bp)    
+
 
 @app.route("/", methods=["GET"])
 def home():
