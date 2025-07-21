@@ -21,3 +21,20 @@ def embed_and_store(filename, content):
     ]
     client.upsert(collection_name=COLLECTION_NAME, points=points)
     return len(chunks)
+def embed_image_and_store(filename, ocr_text):
+    if not ocr_text.strip():
+        return 0
+
+    embedding = EMBED_MODEL.encode(ocr_text).tolist()
+    point = PointStruct(
+        id=str(uuid.uuid4()),
+        vector=embedding,
+        payload={
+            "source": filename,
+            "type": "image",
+            "image_path": f"static/uploads/{filename}",
+            "ocr_text": ocr_text
+        }
+    )
+    client.upsert(collection_name=COLLECTION_NAME, points=[point])
+    return 1
