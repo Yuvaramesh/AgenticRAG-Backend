@@ -99,7 +99,7 @@ def update_history_node(state: dict) -> dict:
 
     try:
         inserted = chat_collection.insert_one(chat_entry)
-        chat_entry["_id"] = str(inserted.inserted_id)
+        chat_entry["id"] = str(inserted.inserted_id)
     except Exception as e:
         print(f"[MongoDB Error] Failed to insert chat: {e}")
 
